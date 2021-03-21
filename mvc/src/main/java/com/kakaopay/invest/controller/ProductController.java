@@ -29,4 +29,13 @@ public class ProductController {
 
         return result;
     }
+
+    @GetMapping("/products/{id}")
+    public ApiResponseDto getProductById(@PathVariable String id) {
+
+        var result = new ApiResponseDto();
+        result.setResultCode(id);
+
+        return result;
+    }
 }
