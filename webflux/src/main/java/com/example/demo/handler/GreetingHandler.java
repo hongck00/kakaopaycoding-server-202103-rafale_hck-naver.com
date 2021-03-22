@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.handler;
 
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
