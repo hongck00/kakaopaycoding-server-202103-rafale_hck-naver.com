@@ -19,10 +19,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<ProductInvestDto> getProduct(String startDt, String finishDt) {
-
-        var list = productMapper.selectProduct(startDt, finishDt);
-
-        return list;
+        return productMapper.selectProduct(startDt, finishDt);
     }
 
     @Override

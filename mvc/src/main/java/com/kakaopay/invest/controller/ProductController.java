@@ -5,6 +5,8 @@ import com.kakaopay.invest.dto.ProductInvestDto;
 import com.kakaopay.invest.model.ProductInfoModel;
 import com.kakaopay.invest.service.ProductService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,7 +19,7 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping("/products")
-    public ApiResponseDto<List<ProductInvestDto>> getProduct(
+    public ResponseEntity<ApiResponseDto<?>> getProduct(
             @RequestParam String startDt,
             @RequestParam String finishDt) {
 
@@ -27,7 +29,7 @@ public class ProductController {
         result.setData(list);
         result.setTotalCount(list.size());
 
-        return result;
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     @GetMapping("/products/{id}")

@@ -29,3 +29,9 @@ management:
       enabled: true
       cache:
         time-to-live: 1s
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://${datasources.url}
+    username: ${datasources.user}
+    password: ${datasources.password}

@@ -17,7 +17,6 @@ public class TestController {
 
     @GetMapping("/test")
     public String test() {
-//        log.info("{}", env.getActiveProfiles());
         return "";
     }
 }
