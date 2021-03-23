@@ -2,3 +2,4 @@
 #  h2:
 #    console:
 #      enabled: true
+#  ${database.password}
