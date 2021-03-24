@@ -34,11 +34,12 @@ management:
 # data source setting
 ########################
 spring:
-  datasource:
-    driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://${datasources.url}
-    username: ${datasources.user}
-    password: ${datasources.password}
+  db1:
+    datasource:
+      driver-class-name: org.mariadb.jdbc.Driver
+      jdbc-url: jdbc:mariadb://${datasources.url}?/serverTimezone=UTC&characterEncoding=UTF-8
+      username: ${datasources.user}
+      password: ${datasources.password}
 
 ########################
 # logging setting

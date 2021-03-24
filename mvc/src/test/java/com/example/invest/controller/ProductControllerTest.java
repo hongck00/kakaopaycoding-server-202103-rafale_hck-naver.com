@@ -1,9 +1,12 @@
 package com.example.invest.controller;
 
+import com.example.invest.mapper.ProductMapper;
 import com.example.invest.service.ProductService;
+import com.example.invest.service.impl.ProductServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -24,12 +27,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
                 "finishDt=20211212"
         },
         controllers = {
-                ProductController.class
+                ProductController.class, ProductService.class, ProductMapper.class, ProductServiceImpl.class
         }
 )
 class ProductControllerTest {
 
-    @MockBean private ProductService productService;
+    @InjectMocks
+    private ProductService productService;
+    @Autowired private ProductMapper productMapper;
+    @Autowired private ProductServiceImpl productServiceImpl;
     @Autowired private MockMvc mockMvc;
     @Autowired private WebApplicationContext ctx;
     @Value("${startDt}") private String startDt;
