@@ -19,7 +19,7 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping("/products")
-    public ResponseEntity<ApiResponseDto<?>> getProduct(
+    public @ResponseBody ApiResponseDto<?> getProducts(
             @RequestParam String startDt,
             @RequestParam String finishDt) {
 
@@ -29,7 +29,7 @@ public class ProductController {
         result.setData(list);
         result.setTotalCount(list.size());
 
-        return new ResponseEntity<>(result, HttpStatus.OK);
+        return result;
     }
 
     @GetMapping("/products/{id}")

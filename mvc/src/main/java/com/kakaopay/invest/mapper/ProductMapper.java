@@ -11,7 +11,7 @@ public interface ProductMapper {
 
     @Select("SELECT P.*" +
             "     , (SELECT sum(invest_amount) FROM INVEST.USER_INVEST_INFO WHERE product_id = P.product_id) AS investAmount" +
-            "     , (select count(0) from invest.user_invest_info where product_id = P.product_id) AS investUserCount" +
+            "     , (select count(0) from INVEST.USER_INVEST_INFO where product_id = P.product_id) AS investUserCount" +
             "  FROM INVEST.PRODUCT_INFO AS P" +
             " WHERE P.started_at >= #{startDt} AND P.finished_at <= #{finishDt}")
     List<ProductInvestDto> selectProduct(String startDt, String finishDt);
