@@ -3,5 +3,5 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.kakaopay.invest.mapper.ProductMapper">
+<mapper namespace="com.example.invest.mapper.ProductMapper">
 </mapper>
