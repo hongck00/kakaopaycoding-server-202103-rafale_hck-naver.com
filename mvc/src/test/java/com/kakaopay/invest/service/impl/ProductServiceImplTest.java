@@ -28,6 +28,7 @@ class ProductServiceImplTest {
     @Test
     void getProduct() {
         var list = productMapper.selectProduct("", "");
+        System.out.println(list);
         log.info("list : {}", list);
     }
 }
