@@ -1,6 +1,7 @@
 package com.example.invest.service.impl;
 
 import com.example.invest.mapper.ProductMapper;
+import com.example.invest.model.ProductInfoModel;
 import com.example.invest.service.ProductService;
 import com.example.invest.dto.ProductInvestDto;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,11 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService {
 
     private final ProductMapper productMapper;
+
+    @Override
+    public List<ProductInfoModel> getProducts() {
+        return productMapper.selectProductAll();
+    }
 
     @Override
     public List<ProductInvestDto> getProduct(String startDt, String finishDt) {

@@ -1,5 +1,6 @@
 package com.example.invest.controller;
 
+import com.example.invest.model.ProductInfoModel;
 import com.example.invest.service.ProductService;
 import com.example.invest.dto.ApiResponseDto;
 import com.example.invest.dto.ProductInvestDto;
@@ -34,6 +35,16 @@ public class ProductController {
 
         var result = new ApiResponseDto();
         result.setResultCode(id);
+
+        return result;
+    }
+
+    @GetMapping("/products")
+    public @ResponseBody ApiResponseDto<?> getProducts() {
+
+        var result = new ApiResponseDto<>();
+        var list = productService.getProducts();
+        result.setData(list);
 
         return result;
     }

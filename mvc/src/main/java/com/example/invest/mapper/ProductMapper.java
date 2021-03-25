@@ -1,6 +1,7 @@
 package com.example.invest.mapper;
 
 import com.example.invest.dto.ProductInvestDto;
+import com.example.invest.model.ProductInfoModel;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -26,4 +27,7 @@ public interface ProductMapper {
             "  FROM INVEST.PRODUCT_INFO P" +
             " WHERE P.product_id = #{productId}")
     ProductInvestDto selectProductByProductId(int productId);
+
+    @Select("SELECT * FROM PRODUCT_INFO")
+    List<ProductInfoModel> selectProductAll();
 }
