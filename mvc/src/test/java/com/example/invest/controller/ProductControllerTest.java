@@ -6,11 +6,9 @@ import com.example.invest.service.impl.ProductServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
@@ -27,17 +25,25 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
                 "finishDt=20211212"
         },
         controllers = {
-                ProductController.class, ProductService.class, ProductMapper.class, ProductServiceImpl.class
+                ProductController.class,
+                ProductService.class,
+                ProductServiceImpl.class,
+                ProductMapper.class
         }
 )
 class ProductControllerTest {
 
-    @InjectMocks
-    private ProductService productService;
-    @Autowired private ProductMapper productMapper;
+    /* service */
+    @Autowired private ProductController productController;
+    @Autowired private ProductService productService;
     @Autowired private ProductServiceImpl productServiceImpl;
+    @Autowired private ProductMapper productMapper;
+
+    /* mock */
     @Autowired private MockMvc mockMvc;
     @Autowired private WebApplicationContext ctx;
+
+    /* value */
     @Value("${startDt}") private String startDt;
     @Value("${finishDt}") private String finishDt;
 
@@ -50,7 +56,7 @@ class ProductControllerTest {
     }
 
     @Test
-    void getProducts() throws Exception {
+    void getProductsByDate() throws Exception {
         log.info("values >> {}, {}", startDt, finishDt);
         this.mockMvc
                 .perform(get("/api/v1/products" +
@@ -68,6 +74,13 @@ class ProductControllerTest {
                 .perform(get("/api/v1/products" +
                         "?startDt=" + startDt +
                         "&finishDt=" + finishDt))
+                .andDo(print());
+    }
+
+    @Test
+    void getProducts() throws Exception {
+        this.mockMvc
+                .perform(get("/api/v1/products"))
                 .andDo(print());
     }
 }

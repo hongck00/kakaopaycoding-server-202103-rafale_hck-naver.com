@@ -1,9 +1,8 @@
 package com.example.invest.controller;
 
-import com.example.invest.model.ProductInfoModel;
-import com.example.invest.service.ProductService;
 import com.example.invest.dto.ApiResponseDto;
 import com.example.invest.dto.ProductInvestDto;
+import com.example.invest.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
