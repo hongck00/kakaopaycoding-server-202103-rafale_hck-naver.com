@@ -4,10 +4,13 @@ import com.example.invest.dto.ApiResponseDto;
 import com.example.invest.dto.ProductInvestDto;
 import com.example.invest.service.ProductService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequestMapping("/api/v1")
 @RequiredArgsConstructor
@@ -17,12 +20,19 @@ public class ProductController {
 
     @GetMapping("/products")
     public @ResponseBody ApiResponseDto<?> getProducts(
-            @RequestParam String startDt,
-            @RequestParam String finishDt) {
+            @RequestParam(required = false) String startDt,
+            @RequestParam(required = false) String finishDt) {
+
+        log.info("{}, {}", startDt, finishDt);
 
         var result = new ApiResponseDto<List<ProductInvestDto>>();
 
-        var list = productService.getProduct(startDt, finishDt);
+        List<ProductInvestDto> list = new ArrayList<>();
+        if (startDt == null && finishDt == null) {
+            list = productService.getProducts();
+        } else {
+            list = productService.getProduct(startDt, finishDt);
+        }
         result.setData(list);
         result.setTotalCount(list.size());
 
@@ -38,7 +48,7 @@ public class ProductController {
         return result;
     }
 
-    @GetMapping("/products")
+    @GetMapping("/products-all")
     public @ResponseBody ApiResponseDto<?> getProducts() {
 
         var result = new ApiResponseDto<>();

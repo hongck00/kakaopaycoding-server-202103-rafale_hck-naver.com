@@ -29,5 +29,5 @@ public interface ProductMapper {
     ProductInvestDto selectProductByProductId(int productId);
 
     @Select("SELECT * FROM PRODUCT_INFO")
-    List<ProductInfoModel> selectProductAll();
+    List<ProductInvestDto> selectProductAll();
 }

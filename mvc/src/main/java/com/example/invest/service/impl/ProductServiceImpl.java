@@ -18,7 +18,7 @@ public class ProductServiceImpl implements ProductService {
     private final ProductMapper productMapper;
 
     @Override
-    public List<ProductInfoModel> getProducts() {
+    public List<ProductInvestDto> getProducts() {
         return productMapper.selectProductAll();
     }
 

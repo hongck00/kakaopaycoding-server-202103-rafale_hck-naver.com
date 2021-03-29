@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ProductService {
 
-    List<ProductInfoModel> getProducts();
+    List<ProductInvestDto> getProducts();
 
     List<ProductInvestDto> getProduct(String startDt, String finishDt);
 

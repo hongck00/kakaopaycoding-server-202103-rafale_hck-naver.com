@@ -6,6 +6,9 @@ import com.example.invest.service.impl.ProductServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Spy;
+import org.mybatis.spring.boot.test.autoconfigure.AutoConfigureMybatis;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -31,6 +34,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
                 ProductMapper.class
         }
 )
+@AutoConfigureMybatis
 class ProductControllerTest {
 
     /* service */
@@ -57,6 +61,8 @@ class ProductControllerTest {
 
     @Test
     void getProductsByDate() throws Exception {
+        startDt = null;
+        finishDt = null;
         log.info("values >> {}, {}", startDt, finishDt);
         this.mockMvc
                 .perform(get("/api/v1/products" +
