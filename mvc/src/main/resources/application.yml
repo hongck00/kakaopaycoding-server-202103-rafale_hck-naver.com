@@ -16,11 +16,17 @@ server:
 #      - classpath:test.sql
 #    initialization-mode: always
 
+########################
+# mybatis setting
+########################
 mybatis:
   mapper-locations: sql-mapper/**/*.xml
   configuration:
     map-underscore-to-camel-case: true
 
+########################
+#
+########################
 management:
   endpoint:
     health:
@@ -37,10 +43,16 @@ spring:
   db1:
     datasource:
       driver-class-name: org.mariadb.jdbc.Driver
-      jdbc-url: jdbc:mariadb://${datasources.url}?/serverTimezone=UTC&characterEncoding=UTF-8
-      username: ${datasources.user}
-      password: ${datasources.password}
+      jdbc-url: jdbc:mariadb://${datasources1.url}?/serverTimezone=UTC&characterEncoding=UTF-8
+      username: ${datasources1.user}
+      password: ${datasources1.password}
 
+  db2:
+    datasource:
+      driver-class-name: org.mariadb.jdbc.Driver
+      jdbc-url: jdbc:mariadb://${datasources2.url}?/serverTimezone=UTC&characterEncoding=UTF-8
+      username: ${datasources2.user}
+      password: ${datasources2.password}
 ########################
 # logging setting
 ########################
